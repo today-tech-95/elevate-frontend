@@ -72,20 +72,20 @@ const Login = () => {
                 </button>
               </div>
               <p className="mt-2">
-                Already have an account?{" "}
+                Already have an account?
                 <NavLink to="/" className="text-[#2467F6]">
                   Sign In
                 </NavLink>
               </p>
               <p className="text-sm mt-4">
-                By proceeding, you acknowledge and accept the{" "}
+                By proceeding, you acknowledge and accept the
                 <a href="#." className="underline">
                   Terms of Use, Privacy Policy,
-                </a>{" "}
-                and{" "}
+                </a>
+                and
                 <a href="#." className="underline">
                   Community Standards
-                </a>{" "}
+                </a>
                 of Elevate.
               </p>
               <p className="mt-2">&copy; elevate {getNewYear()}</p>
