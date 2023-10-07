@@ -7,7 +7,7 @@ const MenteeHome = () => {
   return (
     <Layout>
       <div>
-        <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <div class="block max-w-sm p-6 bg-white  rounded-lg shadow-sm">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
             Good Morning, Nada 👋
           </h5>
@@ -47,7 +47,7 @@ const MenteeHome = () => {
               <input
                 type="search"
                 id="default-search"
-                class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:bg-white dark:white dark:placeholder-gray-400 focus:outline-none"
+                class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-200 rounded-lg bg-gray-50  dark:bg-white dark:white dark:placeholder-gray-400 focus:outline-none"
                 placeholder="Type to search"
                 required
               />
