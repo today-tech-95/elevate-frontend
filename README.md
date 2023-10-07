@@ -6,4 +6,7 @@
 
 ![image](https://github.com/today-tech-95/elevate-frontend/assets/59208992/bcc34672-4d12-433f-b9d1-d7c32d4b1298)
 
+![image](https://github.com/today-tech-95/elevate-frontend/assets/59208992/38b9c729-c587-43fd-8e9a-9b39be4a3d5b)
+
+
 
