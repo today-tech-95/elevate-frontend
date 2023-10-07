@@ -12,7 +12,7 @@ const MenteeLayout = ({children}) => {
     <div className="w-[210px] absolute top-20 left-0 bottom-0 h-[550px] bg-white px-2">
     <SideBar/>
     </div>
-    <main className="absolute top-20 left-[220px] bg-white w-4/5">
+    <main className="absolute top-20 left-[220px]  w-10/12 p-5">
     {children}
     </main>
     </div>
