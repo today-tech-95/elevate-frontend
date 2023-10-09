@@ -12,7 +12,7 @@ const MenteeLayout = ({children}) => {
     <div className="w-[210px] absolute top-20 left-0 bottom-0 h-[550px] bg-white px-2">
     <SideBar/>
     </div>
-    <main className="absolute top-20 left-[220px]  w-10/12 p-5">
+    <main className="absolute top-20 left-[220px] w-10/12 px-5 overflow-y-scroll h-[550px]">
     {children}
     </main>
     </div>
