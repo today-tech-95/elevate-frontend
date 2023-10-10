@@ -10,7 +10,8 @@
 
 ![image](https://github.com/today-tech-95/elevate-frontend/assets/59208992/4f83a818-a1b2-4d40-a09f-e2601a18a933)
 
-https://www.awesomescreenshot.com/video/21480493?key=fb2734897d008d8a7d3aada2111a98e9
+![video](https://www.awesomescreenshot.com/video/21480493?key=fb2734897d008d8a7d3aada2111a98e9)
+
 
 
 
