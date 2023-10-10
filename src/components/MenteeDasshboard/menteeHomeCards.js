@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const MenteeHomeCards = () => {
   return (
     <div className="w-full max-w-sm bg-[#F4F5F8] rounded-lg">
-      <NavLink href="#">
+      <NavLink to="/mentee/profile">
         <img
           className="rounded-lg h-[194px] w-full object-cover"
           src="https://images.pexels.com/photos/3760856/pexels-photo-3760856.jpeg?auto=compress&cs=tinysrgb&w=1600"
@@ -14,13 +14,13 @@ const MenteeHomeCards = () => {
       <div className="pb-5">
         <div className="flex justify-between items-center px-2">
           <div >
-            <NavLink href="#">
+            <NavLink to="/mentee/profile">
               <h5 className="text-xl font-semibold tracking-tight text-gray-900 ">
                 Nada Teta Kirezi
               </h5>
             </NavLink>
 
-            <NavLink href="#">
+            <NavLink to="/mentee/profile">
               <h5 className="text-xl font-semibold tracking-tight text-gray-900 ">
                 Project Manager
               </h5>

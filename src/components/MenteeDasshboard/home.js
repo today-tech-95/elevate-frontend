@@ -13,7 +13,7 @@ const MenteeHome = () => {
           </h5>
           <p class="font-normal">
             You have{" "}
-            <NavLink to="appointment" className="text-[#2467F6]">
+            <NavLink to="/mentee/appointments" className="text-[#2467F6]">
               3 upcoming appointments
             </NavLink>
           </p>
