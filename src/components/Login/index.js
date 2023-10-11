@@ -4,14 +4,18 @@ import ElevateLogoImage from "./../../assets/logoImage.png";
 import GoogleIcon from "./../../assets/googleIcon.png";
 import { NavLink,useNavigate } from "react-router-dom";
 import {toast} from "react-toastify"
-import { SyncOutlined} from '@ant-design/icons';
+import { SyncOutlined,EyeOutlined,EyeInvisibleOutlined} from '@ant-design/icons';
+
+ 
 
 
 const Login = () => {
   const navigate =  useNavigate()
   const [loading,setLoading]  = useState(false)
+  const [showPassword,setShowPassword] = useState(false)
   const [formValues, setFormValues] = useState({
     email: "",
+    password:""
   });
 
   const handleLogin = (event)=>{
@@ -27,6 +31,11 @@ const Login = () => {
   const getNewYear = () => {
     return new Date().getFullYear();
   };
+
+  const handleShowPassword = ()=>{
+    setShowPassword((prev)=>!prev)
+  }
+  
 
   return (
     <div className="flex items-center min-h-screen bg-gray-50">
@@ -58,6 +67,27 @@ const Login = () => {
                       setFormValues({
                         ...formValues,
                         email: event.target.value,
+                      })
+                    }
+                  />
+                </div>
+
+                <div className="mb-3 relative">
+                { showPassword?
+                  <span className="absolute top-1 right-1 cursor-pointer" onClick={handleShowPassword}><EyeOutlined/></span>:
+                  <span className="absolute top-1 right-1 cursor-pointer" onClick={handleShowPassword}><EyeInvisibleOutlined/></span>
+                }
+                
+                  <input
+                    required
+                    className="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                    placeholder="password"
+                    type={showPassword?"text":"password"}
+                    value={formValues.password}
+                    onChange={(event) =>
+                      setFormValues({
+                        ...formValues,
+                        password: event.target.value,
                       })
                     }
                   />

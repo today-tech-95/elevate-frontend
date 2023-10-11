@@ -1,5 +1,6 @@
 import React from "react";
 import TimeSlotBox from "./timeSlots";
+import AppointmentModal from "./../common/modals/appointmentModal"
 
 const Calendar = () => {
   return (
@@ -287,7 +288,7 @@ const Calendar = () => {
               <TimeSlotBox />
               <TimeSlotBox />
             </div>
-            <button className="text-center py-3 w-full bg-[#2467F6] text-white rounded-md mt-2 mb-2">Book Section</button>
+           <AppointmentModal/>
             </div>
           </div>
         </div>
