@@ -4,6 +4,8 @@ import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import { Button, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import RescheduleModal from '../modals/rescheduleModale';
+import CancelAppointmentModal from '../modals/cancelAppointment';
+import { NavLink } from 'react-router-dom';
 
 const items = [
     {
@@ -15,23 +17,20 @@ const items = [
     {
       key: '2',
       label: (
-        <a target="_blank" rel="noopener noreferrer" href="#.">
-        Cancel appointment
-        </a>
+       <CancelAppointmentModal/>
       ),
     },
     {
       key: '3',
       label: (
-        <a target="_blank" rel="noopener noreferrer" href="#.">
-        Chat with mentor
-        </a>
+        <NavLink to="/mentee/messages" >
+         Chat with mentor
+        </NavLink>
       ),
     },
   ];
 
 const SessionCard = () => {
-
     const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat",
     "Sun"
    ];
@@ -41,6 +40,8 @@ const SessionCard = () => {
    const date = newDate.getDate()
    const hour  = newDate.getHours()
    const minutes = newDate.getMinutes()
+   
+
    
 
   return (

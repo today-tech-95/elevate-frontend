@@ -6,7 +6,7 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
-    <ToastContainer position="top-center"/>
+    <ToastContainer position="top-center" theme="colored"/>
     <ElevateRoutes/>
     </BrowserRouter>
   );
