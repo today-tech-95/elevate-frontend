@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { DatePicker, Space,Modal,TimePicker  } from 'antd';
+import {toast} from "react-toastify"
 
 const RescheduleModal = () => {
 
@@ -23,12 +24,17 @@ const RescheduleModal = () => {
     console.log(date, dateString);
 };
   
+const handleRescheduleAppointment = (event)=>{
+  event.preventDefault();
+  toast.success("Appointment rescheduled successfully");
+}
+
   return (
     <>
       <button className="text-center py-1 w-full bg-transparent" onClick={showModal}>Reschedule appointment</button>
       <Modal title={<h2 className="text-center text-[#2467F6]">Schedule appointment</h2>} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
         <p className="mt-2 mb-4 text-center">Why are you rescheduling the appointment?</p>
-      <form>
+      <form onSubmit={handleRescheduleAppointment}>
       <div className="flex justify-between mb-4">
       <Space direction="vertical">
       <DatePicker size='large' onChange={onChange} />
