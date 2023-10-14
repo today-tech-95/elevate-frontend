@@ -3,14 +3,13 @@ import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import { Button, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
+import RescheduleModal from '../modals/rescheduleModale';
 
 const items = [
     {
       key: '1',
       label: (
-        <a target="_blank" rel="noopener noreferrer" href="#.">
-        Reschedule appointment
-        </a>
+        <RescheduleModal/>
       ),
     },
     {
