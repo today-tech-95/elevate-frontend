@@ -49,22 +49,22 @@ const Profile = () => {
                 <div className="flex justify-between gap-4 mt-2 ">
                   <div class="flex mb-5 -space-x-4">
                     <img
-                      class="w-8 h-8   rounded-full "
+                      class="w-8 h-8   rounded-full object-cover"
                       src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1600"
                       alt=""
                     />
                     <img
-                      class="w-8 h-8   rounded-full "
+                      class="w-8 h-8   rounded-full object-cover"
                       src="https://images.pexels.com/photos/6274712/pexels-photo-6274712.jpeg?auto=compress&cs=tinysrgb&w=600"
                       alt=""
                     />
                     <img
-                      class="w-8 h-8   rounded-full "
+                      class="w-8 h-8   rounded-full object-cover"
                       src="https://images.pexels.com/photos/18078282/pexels-photo-18078282/free-photo-of-portrait-of-a-man-sitting.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
                       alt=""
                     />
                     <img
-                      class="w-8 h-8   rounded-full "
+                      class="w-8 h-8   rounded-full object-cover"
                       src="https://images.pexels.com/photos/13330444/pexels-photo-13330444.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
                       alt=""
                     />
