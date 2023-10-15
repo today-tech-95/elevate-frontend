@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import { Button, Dropdown } from 'antd';
@@ -31,6 +31,9 @@ const items = [
   ];
 
 const SessionCard = () => {
+
+ 
+
     const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat",
     "Sun"
    ];
@@ -41,15 +44,20 @@ const SessionCard = () => {
    const hour  = newDate.getHours()
    const minutes = newDate.getMinutes()
    
+   const [properDay,setProperDay] = useState(day)
 
+   useEffect(()=>{
+     if(day===0){
+      setProperDay(6)
+     }
+   },[day])
    
-
   return (
     <div className="mt-3 bg-white w-full rounded-md p-[32px] ">
     <div className="flex gap-[54px] items-center">
 
       <div className="w-[60px] flex flex-col border-r border-gray-200">
-      <div><h1 className="font-black text-2xl text-[#2467F6]">{dayNames[day-1]}</h1></div>
+      <div><h1 className="font-black text-2xl text-[#2467F6]">{dayNames[properDay]}</h1></div>
       <div><h1 className="font-black text-2xl text-[#2467F6]">{date}</h1></div>
       </div>
       
