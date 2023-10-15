@@ -8,3 +8,8 @@ background-position: center;
 background-repeat: repeat;
 background-size: cover;
 }
+
+body{
+    max-width: 1600px;
+    margin: auto;
+}

@@ -4,7 +4,7 @@ import SideBar from './sideBar'
 
 const MenteeLayout = ({children}) => {
   return (
-    <div className="bg-[#F4F5F8] h-screen">
+    <div className="bg-[#F4F5F8] h-screen mx-auto ">
     <div className="w-full relative ">
     <div className="bg-[#2467F6]">
     <TopBar/>
