@@ -4,6 +4,12 @@ import PersonalInformation from './personalInformation'
 import Address from './addresses'
 import Education from './education'
 import Experience from "./experience"
+import Security from './security'
+import Specific from './specific'
+import Measurable from './measurable'
+import Achievable from './achievable'
+import Relevant from './relevant'
+import TimeBound from './timeBound'
 
 const TabContent = ({tab}) => {
 
@@ -26,10 +32,20 @@ const TabContent = ({tab}) => {
     case 3:
         return (
             <div className="w-full flex flex-col gap-[16px]">
-            Security
+             <Specific/>
+             <Measurable/>
+             <Achievable/>
+             <Relevant/>
+             <TimeBound/>
             </div>
         )
     case 4:
+        return (
+            <div className="w-full flex flex-col gap-[16px]">
+            <Security/>
+            </div>
+        )
+    case 5:
         return (
             <div className="w-full flex flex-col gap-[16px]">
             Delete account
