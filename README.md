@@ -46,6 +46,18 @@ https://github.com/today-tech-95/elevate-frontend/assets/59208992/07ddf2cd-9e08-
 
 ![image](https://github.com/today-tech-95/elevate-frontend/assets/59208992/a8c548a7-4925-4823-b146-98f5f404c513)
 
+![image](https://github.com/today-tech-95/elevate-frontend/assets/59208992/1727de7c-3753-4600-ae08-51a484869c50)
+
+![image](https://github.com/today-tech-95/elevate-frontend/assets/59208992/cd554c56-0033-45b2-bf53-4d67399241b3)
+
+![image](https://github.com/today-tech-95/elevate-frontend/assets/59208992/2967468d-3cac-49ff-a493-5cab1bdced6d)
+
+![image](https://github.com/today-tech-95/elevate-frontend/assets/59208992/13b08a4a-8f2d-471c-aa60-730c85ff823f)
+
+
+
+
+
 
 
 
