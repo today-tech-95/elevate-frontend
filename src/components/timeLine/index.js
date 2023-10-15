@@ -3,7 +3,7 @@ import { Timeline } from 'antd';
 import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
 import ChildrenHolder from './children';
 
-const MenteeTimeline = () => (
+const MyTimeline = () => (
   <Timeline
     items={[
       {
@@ -29,4 +29,4 @@ const MenteeTimeline = () => (
   />
 );
 
-export default MenteeTimeline;
+export default MyTimeline;
