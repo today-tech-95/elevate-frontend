@@ -42,6 +42,12 @@ https://github.com/today-tech-95/elevate-frontend/assets/59208992/07ddf2cd-9e08-
 
 ![image](https://github.com/today-tech-95/elevate-frontend/assets/59208992/30c0ce77-65d1-49e7-9a77-c55d7063d902)
 
+![image](https://github.com/today-tech-95/elevate-frontend/assets/59208992/d21873f7-a9c3-45bc-9116-e3470fbb3718)
+
+![image](https://github.com/today-tech-95/elevate-frontend/assets/59208992/a8c548a7-4925-4823-b146-98f5f404c513)
+
+
+
 
 
 
