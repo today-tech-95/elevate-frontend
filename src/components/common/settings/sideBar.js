@@ -1,8 +1,6 @@
-import React,{useState} from 'react'
+import React from 'react'
 
-const SideBar = () => {
-
-    const [activateTab,setActiveTab] = useState(1)
+const SideBar = ({activateTab,setActiveTab}) => {
 
     const tabs = [{
         id:1,
