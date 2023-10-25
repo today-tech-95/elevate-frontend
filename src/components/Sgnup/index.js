@@ -5,29 +5,44 @@ import GoogleIcon from "./../../assets/googleIcon.png";
 import { NavLink, useNavigate} from "react-router-dom";
 import { SyncOutlined,EyeOutlined,EyeInvisibleOutlined} from '@ant-design/icons';
 import { toast } from 'react-toastify';
+import axios from "axios"
 
 
 const Login = () => {
   const navigate = useNavigate()
   const [loading,setLoading] = useState(false)
   const [showPassword,setShowPassword] = useState(false)
-  const [showConfirmedPassword,setConfrimedPassword] = useState(false)
+  // const [showConfirmedPassword,setConfrimedPassword] = useState(false)
   const [formValues, setFormValues] = useState({
+    firstName:"",
+    lastName:"",
     email: "",
     password: "",
-    confirmPassword: "",
     role: "",
   });
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
+  try {
     event.preventDefault();
-    console.log("formValues", formValues);
     setLoading(true)
-    setTimeout(()=>{
-      setLoading(false)
-      toast.success("Success,Please Login")
-      navigate('/')
-    },2000)
+    const {data} = await axios({
+      url:"https://elevate-backend.vercel.app/api/v1/elevate/user/register",
+      method:"POST",
+      data:{
+       ...formValues
+      }
+    })
+
+    console.log(data)
+    toast.success(data.message+" Please Login")
+    navigate("/")
+    setLoading(false)
+
+  } catch (err) {
+    console.log(err)
+    toast.success("There was an error.")
+    setLoading(false)
+  }
   };
 
 
@@ -35,10 +50,7 @@ const Login = () => {
     setShowPassword((prev)=>!prev)
   }
   
-  const handleShowConfrimedPassword = ()=>{
-    setConfrimedPassword((prev)=>!prev)
 
-  }
   const getNewYear = () => {
     return new Date().getFullYear();
   };
@@ -62,6 +74,34 @@ const Login = () => {
                 where mentors are ready to help you soar to new heights!
               </p>
               <form onSubmit={handleSubmit}>
+              <div className="mb-3 grid grid-cols-1 md:grid-cols-2 gap-2">
+              <input
+                type="text"
+                required
+                className="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                placeholder="First Name"
+                value={formValues.firstName}
+                onChange={(event) =>
+                  setFormValues({
+                    ...formValues,
+                    firstName: event.target.value,
+                  })
+                }
+              />
+              <input
+                type="text"
+                required
+                className="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                placeholder="Last Name"
+                value={formValues.lastName}
+                onChange={(event) =>
+                  setFormValues({
+                    ...formValues,
+                    lastName: event.target.value,
+                  })
+                }
+              />
+            </div>
                 <div className="mb-3">
                   <input
                     type="email"
@@ -97,7 +137,7 @@ const Login = () => {
                     }
                   />
                 </div>
-                <div className="mb-3 relative">
+              {/*  <div className="mb-3 relative">
                 { showConfirmedPassword?
                   <span className="absolute top-1 right-1 cursor-pointer" onClick={handleShowConfrimedPassword}><EyeOutlined/></span>:
                   <span className="absolute top-1 right-1 cursor-pointer" onClick={handleShowConfrimedPassword}><EyeInvisibleOutlined/></span>
@@ -115,7 +155,7 @@ const Login = () => {
                       })
                     }
                   />
-                </div>
+                  </div>*/}
                 <div>
                   <select
                     className="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
