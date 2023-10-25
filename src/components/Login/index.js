@@ -5,9 +5,7 @@ import GoogleIcon from "./../../assets/googleIcon.png";
 import { NavLink,useNavigate } from "react-router-dom";
 import {toast} from "react-toastify"
 import { SyncOutlined,EyeOutlined,EyeInvisibleOutlined} from '@ant-design/icons';
-
- 
-
+import axios from "axios"
 
 const Login = () => {
   const navigate =  useNavigate()
@@ -15,17 +13,28 @@ const Login = () => {
   const [showPassword,setShowPassword] = useState(false)
   const [formValues, setFormValues] = useState({
     email: "",
-    password:""
+    password:"",
   });
 
-  const handleLogin = (event)=>{
-    event.preventDefault()
-    setLoading(true)
-     setTimeout(()=>{
+  const handleLogin = async(event)=>{
+
+    try {
+      event.preventDefault()
+      setLoading(true)
+      const {data} =  await axios({
+        url:"https://elevate-backend.vercel.app/api/v1/elevate/user/login",
+        method:"POST",
+         data:{
+          ...formValues
+         }
+      })
+
+      toast.success(data.message)
+      // console.log(data)
+    } catch (err) {
+      toast.error("Error: " + err.message)
       setLoading(false)
-      toast.success("Logged in successfully")
-      navigate('/mentee')
-     },2000)
+    }
   }
 
   const getNewYear = () => {
