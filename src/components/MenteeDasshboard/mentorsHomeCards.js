@@ -1,28 +1,28 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const MenteeHomeCards = () => {
+const MenteeHomeCards = ({mentor}) => {
   return (
-    <div className="w-full max-w-sm bg-[#F4F5F8] rounded-lg">
+    <div className="w-full max-w-sm bg-[#aec0f7] rounded-lg">
       <NavLink to="/mentee/profile">
         <img
           className="rounded-lg h-[194px] w-full object-cover"
-          src="https://images.pexels.com/photos/3760856/pexels-photo-3760856.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          alt="product"
+          src={mentor.picture}
+          alt="mentor"
         />
       </NavLink>
       <div className="pb-5">
         <div className="flex justify-between items-center px-2">
           <div >
             <NavLink to="/mentee/profile">
-              <h5 className="text-xl font-semibold tracking-tight text-gray-900 ">
-                Nada Teta Kirezi
+              <h5 className="text-xl font-semibold tracking-tight text-gray-900 flex gap-4">
+               <span>{mentor.firstName}</span> <span>{mentor.lastName}</span>
               </h5>
             </NavLink>
 
             <NavLink to="/mentee/profile">
               <h5 className="text-xl font-semibold tracking-tight text-gray-900 ">
-                Project Manager
+              {mentor.role}
               </h5>
             </NavLink>
           </div>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState,useEffect} from "react";
 import ElevateLogoText from "./../../assets/Elevatelogo.svg";
 import ElevateLogoImage from "./../../assets/logoImage.png";
 import GoogleIcon from "./../../assets/googleIcon.png";
@@ -6,9 +7,11 @@ import { NavLink,useNavigate } from "react-router-dom";
 import {toast} from "react-toastify"
 import { SyncOutlined,EyeOutlined,EyeInvisibleOutlined} from '@ant-design/icons';
 import axios from "axios"
+import { useCookies } from 'react-cookie';
 
 const Login = () => {
   const navigate =  useNavigate()
+  const [cookies, setCookie] = useCookies(['user']);
   const [loading,setLoading]  = useState(false)
   const [showPassword,setShowPassword] = useState(false)
   const [formValues, setFormValues] = useState({
@@ -30,7 +33,9 @@ const Login = () => {
       })
 
       toast.success(data.message)
-      // console.log(data)
+      setLoading(false)
+      console.log(data)
+      setCookie('user',data?.data)
     } catch (err) {
       toast.error("Error: " + err.message)
       setLoading(false)
@@ -45,6 +50,14 @@ const Login = () => {
     setShowPassword((prev)=>!prev)
   }
   
+  console.log("cookie values",cookies?.user?.user?.role)
+
+ 
+  useEffect(()=>{
+  if(cookies?.user?.user?.role.toLowerCase()==="mentee"){
+    navigate('/mentee')
+  }
+  },[cookies?.user?.user?.role])
 
   return (
     <div className="flex items-center min-h-screen bg-gray-50">
