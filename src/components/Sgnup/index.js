@@ -40,7 +40,7 @@ const Login = () => {
 
   } catch (err) {
     console.log(err)
-    toast.success("There was an error.")
+    toast.success(err?.response?.error)
     setLoading(false)
   }
   };
@@ -168,8 +168,8 @@ const Login = () => {
                     }
                   >
                     <option>Mentee or Mentor ?</option>
-                    <option value="Mentee">Mentee</option>
-                    <option value="Mentor">Mentor</option>
+                    <option value="mentee">Mentee</option>
+                    <option value="mentor">Mentor</option>
                   </select>
                 </div>
                 <button
