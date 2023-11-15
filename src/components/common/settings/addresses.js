@@ -1,7 +1,8 @@
 import React from "react";
 import DriveFileRenameOutlineOutlined from "@mui/icons-material/DriveFileRenameOutlineOutlined";
 
-const Address = () => {
+const Address = ({data}) => {
+
   return (
     <div className="w-full p-[24px] rounded-[12px] border border-[#B1B8C5]">
       
@@ -14,26 +15,28 @@ const Address = () => {
           </span>
         </button>
       </div>
-
+      {!data?.address?<p className="text-center p-2 text-gray-500">You have no address yet</p>
+      :
       <div className="flex justify-between w-[480px] ">
         <div>
           <div className="flex flex-col">
             <div className="text-[#646B79]">Country</div>
-            <div>Rwanda</div>
+            <div className="capitalize">{data?.address?.country}</div>
             <div className="text-[#646B79]">Postal code</div>
-            <div>N/A</div>
+            <div>{data?.address?.postalCode}</div>
           </div>
         </div>
 
         <div>
           <div className="flex flex-col">
             <div className="text-[#646B79]">City / Province</div>
-            <div>Kicukiro, Masaka</div>
+            <div className="capitalize">{data?.address?.provence}</div>
             <div className="text-[#646B79]">Phone</div>
-            <div>+250 000 000 000</div>
+            <div>{data?.address?.phone}</div>
           </div>
         </div>
       </div>
+      }
     </div>
   );
 };

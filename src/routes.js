@@ -14,6 +14,7 @@ import MentorMessages from "./components/mentorDashboard/mentorMessages";
 import MentorAppointment from "./components/mentorDashboard/mentorAppointment";
 import MentorProgress from "./components/mentorDashboard/mentorProgress";
 import MentorSettings from "./components/mentorDashboard/mentorSettings";
+import {Protected,ProtectedMentee} from "./utils/ProtectedRoutes";
 
 
 const ElevateRoutes = () => {
@@ -22,19 +23,45 @@ const ElevateRoutes = () => {
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/mentee" element={<MenteeHome />} />
-      <Route path="/mentee/Profile" element={<Profile />} />
-      <Route path="/mentee/messages" element={<MenteeMessages />} />
-      <Route path="/mentee/progress" element={<MenteeProgress />} />
-      <Route path="/mentee/settings" element={<MenteeSettings />} />
-      <Route path="/mentee/appointments" element={<MenteeAppointment />} />
+      <Route path="/mentee" element={
+      <ProtectedMentee route="/">
+        <MenteeHome />
+      </ProtectedMentee>} />
+      <Route path="/mentee/profile/:id" element={<ProtectedMentee route="/"><Profile /></ProtectedMentee>} />
+      <Route path="/mentee/messages" element={<ProtectedMentee route="/"><MenteeMessages /></ProtectedMentee>} />
+      <Route path="/mentee/progress" element={<ProtectedMentee route="/"><MenteeProgress /></ProtectedMentee>} />
+      <Route path="/mentee/settings" element={<ProtectedMentee route="/"><MenteeSettings /></ProtectedMentee>} />
+      <Route path="/mentee/appointments" element={<ProtectedMentee route="/"><MenteeAppointment /></ProtectedMentee>} />
 
-      <Route path="/mentor" element={<MentorHome />} />
-      <Route path="/mentor/Profile" element={<MentorProfile />} />
-      <Route path="/mentor/messages" element={<MentorMessages />} />
-      <Route path="/mentor/progress" element={<MentorProgress />} />
-      <Route path="/mentor/settings" element={<MentorSettings />} />
-      <Route path="/mentor/appointments" element={<MentorAppointment />} />
+      <Route path="/mentor" element={
+        <Protected  route="/">              
+          <MentorHome />
+        </Protected>} 
+      />
+      <Route path="/mentor/mentee/profile/:id" element={
+        <Protected  route="/">              
+          <MentorProfile />
+        </Protected>} 
+      />
+      <Route path="/mentor/messages" element={
+        <Protected  route="/">              
+          <MentorMessages />
+        </Protected>} 
+      />
+      <Route path="/mentor/progress" element={
+        <Protected  route="/">              
+          <MentorProgress />
+        </Protected>} 
+      />
+      <Route path="/mentor/settings" element={
+        <Protected  route="/">              
+          <MentorSettings />
+        </Protected>} 
+      />
+      <Route path="/mentor/appointments" element={
+        <Protected  route="/">              
+          <MentorAppointment />
+        </Protected>} />
 
     </Routes>
   );

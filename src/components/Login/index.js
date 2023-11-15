@@ -34,10 +34,15 @@ const Login = () => {
 
       toast.success(data.message)
       setLoading(false)
-      console.log(data)
       setCookie('user',data?.data)
+      if(data?.data?.user?.role.toLowerCase()==="mentee"){
+        navigate('/mentee')
+      }else if(data?.data?.user?.role.toLowerCase()==="mentor"){
+        navigate('/mentor')
+      }
     } catch (err) {
       toast.error("Error: " + err.message)
+      console.log(err)
       setLoading(false)
     }
   }
@@ -50,14 +55,10 @@ const Login = () => {
     setShowPassword((prev)=>!prev)
   }
   
-  console.log("cookie values",cookies?.user?.user?.role)
-
  
-  useEffect(()=>{
-  if(cookies?.user?.user?.role.toLowerCase()==="mentee"){
-    navigate('/mentee')
-  }
-  },[cookies?.user?.user?.role])
+  // useEffect(()=>{
+  
+  // },[cookies?.user?.user?.role])
 
   return (
     <div className="flex items-center min-h-screen bg-gray-50">

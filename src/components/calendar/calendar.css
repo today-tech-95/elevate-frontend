@@ -1,0 +1,45 @@
+/* .react-calendar{
+    width: 100%!important;
+} */
+.react-calendar__tile{
+    position: relative;
+}
+  .selected-date-circle {
+    position: absolute;
+    top: 19%;
+    left: 26%;
+    width: 24px;
+    height:24px;
+    border: 2px solid #2467F6;
+    background-color: #2467F6; 
+    border-radius: 50%; 
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .selected-date {
+    font-weight: bold;
+    color: #fff; 
+  }
+
+  .react-calendar__tile.disabled {
+    background-color: #ccc;
+    color: #1C1F23;
+  }
+  
+  /* Style for enabled dates */
+  .react-calendar__tile.enabled {
+    background-color: #fff;
+    color: #007bff;
+    border: 2px solid #fff;
+  }
+
+  .react-calendar__tile.enabled:hover{
+    color:#1C1F23
+  }
+
+  .react-calendar__tile.selected {
+    background-color: #007bff;
+    color: #fff;
+  }

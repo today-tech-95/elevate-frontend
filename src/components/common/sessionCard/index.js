@@ -30,7 +30,7 @@ const items = [
     },
   ];
 
-const SessionCard = () => {
+const SessionCard = ({item}) => {
 
  
 
@@ -57,33 +57,33 @@ const SessionCard = () => {
     <div className="flex gap-[54px] items-center">
 
       <div className="w-[60px] flex flex-col border-r border-gray-200">
-      <div><h1 className="font-black text-2xl text-[#2467F6]">{dayNames[properDay]}</h1></div>
-      <div><h1 className="font-black text-2xl text-[#2467F6]">{date}</h1></div>
+      <div><h1 className="font-black text-2xl text-[#2467F6]">{new Intl.DateTimeFormat("en-CA", {weekday: "short",}).format(new Date(item.day))}</h1></div>
+      <div><h1 className="font-black text-2xl text-[#2467F6]">{new Intl.DateTimeFormat("en-CA", {day:"numeric",}).format(new Date(item.day))}</h1></div>
       </div>
       
       <div className="w-[136px] flex flex-col  gap-3">
         <div className="flex items-center gap-2">
         <div className="flex gap-2">
-        <AccessTimeOutlinedIcon className="text-sm text-[#646B79]"/><span>{hour}:{minutes}</span>
+        <AccessTimeOutlinedIcon className="text-sm text-[#646B79]"/><span>{item.start_date}</span>
         </div>
         <div>-</div>
         <div className="flex gap-2">
-        <span>{hour}:{minutes}</span>
+        <span>{item.end_date}</span>
         </div>
         </div>
         <div className="flex gap-2"><FmdGoodOutlinedIcon className="text-sm text-[#646B79]"/><span>Online</span></div>
       </div>
 
       <div className="flex flex-col gap-3">
-        <p>Mentorship session Jane Doe + Lilian Doe</p>
-        <div class="flex -space-x-2">
+        <p className='truncate'>{item.title} with {item.participants?.map(item=>(<span>{item.firstName +" "+item.lastName}</span>))}</p>
+        <div className="flex -space-x-2">
         <img
-          class="w-8 h-8   rounded-full object-cover"
+          className="w-8 h-8   rounded-full object-cover"
           src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1600"
           alt=""
         />
         <img
-          class="w-8 h-8   rounded-full object-cover"
+          className="w-8 h-8   rounded-full object-cover"
           src="https://images.pexels.com/photos/6274712/pexels-photo-6274712.jpeg?auto=compress&cs=tinysrgb&w=600"
           alt=""
         />
@@ -94,8 +94,6 @@ const SessionCard = () => {
       <div className="flex justify-center gap-10">
       <button className="px-8 py-1 bg-[#2467F6] h-10 text-white rounded-md">Join Meeting</button>
       <Dropdown
-      
-     
       className="px-8"
       arrow
       menu={{

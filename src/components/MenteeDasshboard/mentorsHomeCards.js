@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const MenteeHomeCards = ({mentor}) => {
+const MentorsHomeCard = ({mentor}) => {
   return (
     <div className="w-full max-w-sm bg-[#aec0f7] rounded-lg">
-      <NavLink to="/mentee/profile">
+      <NavLink to={`/mentee/profile/${mentor._id}`}>
         <img
           className="rounded-lg h-[194px] w-full object-cover"
           src={mentor.picture}
@@ -47,4 +47,4 @@ const MenteeHomeCards = ({mentor}) => {
   );
 };
 
-export default MenteeHomeCards;
+export default MentorsHomeCard;

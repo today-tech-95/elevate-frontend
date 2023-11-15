@@ -12,9 +12,13 @@ import SignalCellularAltOutlinedIcon from "@mui/icons-material/SignalCellularAlt
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import { useLocation } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 
 const SideBarMenu = () => {
   const location = useLocation();
+  const [cookies, setCookie,removeCookie] = useCookies(['user']);
+
 
   return (
     <Box sx={{ width: "100%", maxWidth: 200, bgcolor: "background.paper" }}>
@@ -128,6 +132,22 @@ const SideBarMenu = () => {
               className={
                 location.pathname === "/mentee/settings" ? "text-[#2467F6]" : ""
               }
+            />
+          </ListItemButton>
+        </NavLink>
+        <NavLink to="/">
+          <ListItemButton
+            style={{ borderRadius: "5px" }}
+            onClick={()=>removeCookie("user")}
+          >
+            <ListItemIcon>
+              <ExitToAppOutlinedIcon
+                className={"text-red-700"}
+              />
+            </ListItemIcon>
+            <ListItemText
+              primary="Logout"
+              className={ "text-red-700"}
             />
           </ListItemButton>
         </NavLink>
