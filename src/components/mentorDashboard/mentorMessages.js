@@ -4,7 +4,7 @@ import Messages from '../common/messages';
 
 const MentorMessages = () => {
   return (
-    <Layout><Messages/></Layout>
+    <Layout><Messages /></Layout>
   )
 }
 

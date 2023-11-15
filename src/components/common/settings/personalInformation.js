@@ -1,7 +1,7 @@
 import React from "react";
 import DriveFileRenameOutlineOutlined from "@mui/icons-material/DriveFileRenameOutlineOutlined";
 
-const PersonalInformation = () => {
+const PersonalInformation = ({data}) => {
   return (
     <div className="w-full p-[24px] rounded-[12px] border border-[#B1B8C5]">
 
@@ -20,16 +20,16 @@ const PersonalInformation = () => {
       <div>
           <div className="flex flex-col">
             <div className="text-[#646B79]">First Name</div>
-            <div>Nada Teta</div>
+            <div>{data?.firstName}</div>
             <div className="text-[#646B79]">Email</div>
-            <div>teta.teta@gmail.com</div>
+            <div>{data?.email}</div>
           </div>
         </div>
 
         <div>
           <div className="flex flex-col">
             <div className="text-[#646B79]">Last Name</div>
-            <div>Kirezi</div>
+            <div>{data?.lastName}</div>
             <div className="text-[#646B79]">Phone</div>
             <div>+250 000 000 000</div>
           </div>

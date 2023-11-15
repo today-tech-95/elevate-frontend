@@ -3,29 +3,22 @@ import { Timeline } from 'antd';
 import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
 import ChildrenHolder from './children';
 
-const MyTimeline = () => (
+
+const MyTimeline = ({data}) => (
   <Timeline
-    items={[
+    items={data?.map(item=>(
       {
         children:<ChildrenHolder 
-         title="Bank of Kigali"
-         dateTime="Aug 2022 - Present - 1 yr"
-         location="Kigali city, Rwanda"
-         role="Product Designer"
+         title={item.comapny}
+         from={item.from}
+         to={item.to}
+         location={item.address}
+         role={item.position}
          />,
         dot:<ApartmentOutlinedIcon/>
-      },
-      {
-        children:<ChildrenHolder 
-         title="Bank of Kigali"
-         dateTime="Aug 2022 - Present - 1 yr"
-         location="Kigali city, Rwanda"
-         role="Product Designer"
-         />,
-        dot:<ApartmentOutlinedIcon/>
-      },
-      
-    ]}
+      }
+      ))     
+    }
   />
 );
 

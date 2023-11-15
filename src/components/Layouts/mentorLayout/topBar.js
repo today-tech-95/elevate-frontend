@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Search from "../../common/search";
 import AvatarChips from "./../../common/chip";
+import { useCookies } from "react-cookie";
+import { io } from "socket.io-client";
+import { toast } from "react-toastify";
 
-const TopBar = () => {
+const TopBar = ({setOpen,openNotifications,count}) => {
+  const [cookie]=useCookies(["user"]);
+
   return (
     <div className="w-full flex justify-between items-center h-[75px] px-[38px]">
       <div>
@@ -13,10 +18,13 @@ const TopBar = () => {
       </div>
       <div>
         <AvatarChips
+          setOpen={setOpen}
+          count={count}
+          openNotifications={openNotifications}
           imagrUrl={
-            "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600"
+            cookie?.user?.user?.picture
           }
-          name="Jeane Doe"
+          name={cookie?.user?.user?.firstName +" " + cookie?.user?.user?.lastName}
         />
       </div>
     </div>

@@ -16,15 +16,15 @@ function notificationsLabel(count) {
     return `${count} notifications`;
   }
 
-const AvatarChips =({imagrUrl,name})=>{
+const AvatarChips =({imagrUrl,name,setOpen,openNotifications,count})=>{
 
   return (
     <div className="flex justify-between gap-5">
-    <IconButton aria-label={notificationsLabel(100)}>
-    <Badge badgeContent={9} color="error" >
-      <CircleNotificationsIcon className=" text-white" />
-    </Badge>
-  </IconButton>
+    <IconButton aria-label={notificationsLabel(100)} onClick={()=>setOpen(!openNotifications)}>
+      <Badge badgeContent={count} color="error" >
+        <CircleNotificationsIcon className=" text-white" />
+      </Badge>
+    </IconButton>
     <Stack direction="row" spacing={1} className="cursor-pointer" >
     <Chip
     className="bg-white" 

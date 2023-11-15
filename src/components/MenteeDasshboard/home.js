@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { BounceLoader } from "react-spinners";
 import { searchEngine } from "../../utils/searchEngine";
 import { useCookies } from "react-cookie";
+import { ErrorResponse } from "../errorResponse";
 
 const MentorsCard = () => {
   const [cookies] = useCookies(["user"]);
@@ -16,18 +17,12 @@ const MentorsCard = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [keyword, setKeyword] = useState("");
   let timeOfDay = "";
+  
+  const [error,setError]=useState({
+    status:false,
+    errorMsg:""
+  });
 
-  useEffect(() => {
-    if (keyword === "" && mentors.length === 0) {
-      getAllMentors();
-    }
-  }, [keyword]);
-
-  useEffect(() => {
-    if (keyword !== "") {
-      handleSearchMentors();
-    }
-  }, [keyword]);
 
   const handleSearchMentors = () => {
 
@@ -37,6 +32,8 @@ const MentorsCard = () => {
   };
 
   const getAllMentors = async () => {
+    setError({...error,status:false,errorMsg:""})
+
     try {
       setLoading(true);
       const { data } = await axios({
@@ -49,7 +46,8 @@ const MentorsCard = () => {
       setMentors(data.data);
       setLoading(false);
     } catch (err) {
-      toast.error("There was an error. getting mentors");
+      setError({...error,status:true,errorMsg:error})
+      setLoading(false)
     }
   };
 
@@ -91,32 +89,67 @@ const MentorsCard = () => {
     }
   };
 
+  const [appointments,setAppointments]=useState([]);
+
+  const fetchAppointments=async()=>{
+    try {
+      setLoading(true)
+      const res=await axios({
+        url:`https://elevate-backend.vercel.app/api/v1/elevate/appointment?menter=${cookies?.user?.user?._id}`,
+        method:"GET",
+        params:{
+          authToken: cookies?.user?.token,
+          menter:cookies?.user?.user?._id,
+        }
+      })
+      setAppointments(res?.data?.data);
+    } catch (error) {
+      console.log(error);    
+    }
+  }
+
+  useEffect(()=>{
+    if (keyword === "" && mentors.length === 0) {
+      getAllMentors();
+    }
+
+    if (keyword !== "") {
+      handleSearchMentors();
+    }
+
+    fetchAppointments();
+  },[keyword])
+
+  const filteredData =appointments?.filter(item=>(item?.participants?.some(item=>item._id ==cookies?.user?.user?._id) || item.menter._id ==cookies?.user?.user?._id) && new Date(item.day) > new Date());
+
+
+
   return (
     <Layout>
       <div>
-        <div class="block max-w-sm p-6 bg-white  rounded-lg shadow-sm">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+        <div className="block max-w-sm p-6 bg-white  rounded-lg shadow-sm">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
             {timeOfDay}, {cookies?.user?.user?.firstName} 👋
           </h5>
-          <p class="font-normal">
+          <p className="font-normal">
             You have{" "}
             <NavLink to="/mentee/appointments" className="text-[#2467F6]">
-              3 upcoming appointments
+              {filteredData?.length} upcoming appointments
             </NavLink>
           </p>
         </div>
         <div className="mt-4">
           <form>
             <label
-              for="default-search"
-              class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+             htmlFor="default-search"
+              className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
             >
               Search
             </label>
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg
-                  class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  className="w-4 h-4 text-gray-500 dark:text-gray-400"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -134,7 +167,7 @@ const MentorsCard = () => {
               <input
                 type="search"
                 id="default-search"
-                class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-200 rounded-lg bg-gray-50  dark:bg-white dark:white dark:placeholder-gray-400 focus:outline-none"
+                className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-200 rounded-lg bg-gray-50  dark:bg-white dark:white dark:placeholder-gray-400 focus:outline-none"
                 placeholder="Type to search"
                 required
                 value={keyword}
@@ -152,6 +185,8 @@ const MentorsCard = () => {
             {printMentors()}
           </div>
         )}
+        {error.status && <ErrorResponse errorMsg={error.errorMsg} retryHandler={getAllMentors}/>}
+
       </div>
     </Layout>
   );

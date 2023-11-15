@@ -1,0 +1,1 @@
+export const BACKEND_URL="https://elevate-backend.vercel.app/api/v1/elevate"

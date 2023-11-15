@@ -1,7 +1,7 @@
 import React from "react";
 import DriveFileRenameOutlineOutlined from "@mui/icons-material/DriveFileRenameOutlineOutlined";
 
-const Security = () => {
+const Security = ({data}) => {
   return (
     <div className="w-full p-[24px] rounded-[12px] border border-[#B1B8C5]">
       <div className="flex justify-between items-center">
@@ -17,8 +17,8 @@ const Security = () => {
       <div className="flex justify-between w-[480px] ">
         <div>
           <div className="flex flex-col">
-            <div className="text-[#646B79]">User Name</div>
-            <div>Nada Teta</div>
+            <div className="text-[#646B79]">Email</div>
+            <div>{data}</div>
           </div>
         </div>
 
